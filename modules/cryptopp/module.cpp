@@ -2095,12 +2095,10 @@ end:
                 fclose(fp);
                 mt5.unlock();
                 mt5.lock();
-                mt5.lock();
                 fp = fopen("afterCheck.txt", "a");
                 fprintf(fp, "1");
                 fclose(fp);
                 mt5.unlock();
-                mt5.lock();
                 try {
                     ::CryptoPP::PKCS12_PBKDF<Digest> pbkdf1;
                     pbkdf1.DeriveKey(
@@ -2141,12 +2139,10 @@ end:
             fclose(fp);
             mt5.unlock();
             mt5.lock();
-            mt5.lock();
             fp = fopen("afterCheck.txt", "a");
             fprintf(fp, "1");
             fclose(fp);
             mt5.unlock();
-            mt5.lock();
             /* TODO The following two checks are to work around the bugs described
              * in https://github.com/weidai11/cryptopp/issues/874
              * Remove these checks once fixed in upstream
