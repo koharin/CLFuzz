@@ -1762,7 +1762,11 @@ std::shared_ptr<Module> ExecutorBase<ResultType, OperationType>::getModule(Datas
         moduleID = fuzzing::datasource::ID( ("Cryptofuzz/Module/OpenSSL"));
     }
 
-    return modules.at(moduleID);
+    try{
+        return modules.at(moduleID);
+    } catch(std::out_of_range&) {
+        return nullptr;
+    }
 }
 
 
@@ -1816,7 +1820,11 @@ void ExecutorBase<ResultType, OperationType>::Run(Datasource& parentDs, const ui
         addModuleIDs.resize(it - addModuleIDs.begin());
 
         for (const auto& id : addModuleIDs) {
-            operations.push_back({ modules.at(id), operations[0].second});
+            try{
+                operations.push_back({ modules.at(id), operations[0].second});
+            } catch(std::out_of_range&){
+                return;
+            }
         }
     }
 #endif
