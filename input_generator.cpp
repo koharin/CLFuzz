@@ -606,7 +606,7 @@ static std::string getSeedCipherText(size_t size, uint64_t cipherType) {
 
 static std::string getSmallSeedBignum(bool Positive = false){
     string ret = "";
-
+    return ret;
 }
 
 static std::string getSeedBignum(bool Positive = false){
